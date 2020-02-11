@@ -1,6 +1,7 @@
 package com.revature.eval.java.core;
 
 import java.time.temporal.Temporal;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,8 +15,15 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String reverse(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		 if (string == null) {
+	       return string;		 
+		 }
+		  String reverseString = "";
+		  for(int i = string.length() -1; i >= 0; i--) {
+			  reverseString = reverseString + string.charAt(i);
+		  }
+		  
+		return reverseString;
 	}
 
 	/**
@@ -26,10 +34,17 @@ public class EvaluationService {
 	 * @param phrase
 	 * @return
 	 */
-	public String acronym(String phrase) {
-		// TODO Write an implementation for this method declaration
-		return null;
-	}
+	public String acronym(String string) {
+		String acronym = "";
+		String[] phrase = acronym.split("[^\\p{Alpha}]+");
+		char[] newAcronym = new char[phrase.length];
+		for(int i = 0; i < newAcronym.length; i++) {
+			newAcronym[i] = phrase[i].charAt(0);
+		}
+		 return new String(newAcronym).toUpperCase();
+		
+		} 
+	
 
 	/**
 	 * 3. Determine if a triangle is equilateral, isosceles, or scalene. An
@@ -81,17 +96,22 @@ public class EvaluationService {
 		}
 
 		public boolean isEquilateral() {
-			// TODO Write an implementation for this method declaration
+			if(sideOne == sideTwo && sideThree == sideOne) {
+				return true;
+			} else
 			return false;
 		}
 
 		public boolean isIsosceles() {
-			// TODO Write an implementation for this method declaration
-			return false;
+			if(sideOne == sideTwo || sideThree == sideOne || sideTwo == sideThree) {
+				return true;
+			}	return false;
 		}
 
 		public boolean isScalene() {
-			// TODO Write an implementation for this method declaration
+			if(sideOne != sideTwo && sideTwo != sideThree && sideThree != sideOne) {
+				return true;
+			} else
 			return false;
 		}
 
@@ -113,9 +133,38 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int getScrabbleScore(String string) {
-		// TODO Write an implementation for this method declaration
-		return 0;
-	}
+		 String letters = letters.toUpperCase();
+	     int score = 0;
+	     for(int i = 0; i < letters.length(); i++) {
+	     char value = letters.charAt(i);
+	     switch (value) {
+	     case 'D':
+         case 'G':
+             score +=2; break;
+         case 'B':
+         case 'C':
+         case 'M':
+         case 'P':
+             score +=3; break;
+         case 'F':
+         case 'H':
+         case 'V':
+         case 'W':
+         case 'Y':
+             score +=4; break;
+         case 'K':
+             score +=5; break;
+         case 'J':
+         case 'X':
+             score +=8; break;
+         case 'Q':
+         case 'Z':
+             score +=10; break;
+         default: return 1;
+	     }
+	     } return score;
+         }
+          
 
 	/**
 	 * 5. Clean up user-entered phone numbers so that they can be sent SMS messages.
@@ -149,8 +198,15 @@ public class EvaluationService {
 	 * NANP-countries, only 1 is considered a valid country code.
 	 */
 	public String cleanPhoneNumber(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		String phoneNumbers = "";
+		String cleanPhoneNumbers = phoneNumbers.replaceAll("[^\\d]+", "");
+		char[] newPhoneNumbers = new char[cleanPhoneNumbers.length()];
+		if(newPhoneNumbers.length != 10 && cleanPhoneNumbers.charAt(0) == '1') {
+			return cleanPhoneNumbers.substring(1);
+		} else {
+			 return cleanPhoneNumbers;
+		}
+		 return new String(cleanPhoneNumbers);
 	}
 
 	/**
@@ -163,8 +219,14 @@ public class EvaluationService {
 	 * @return
 	 */
 	public Map<String, Integer> wordCount(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		String word = "";
+		String[] wordCounts = word.split("[^\\w]+");
+		Map<String, Integer> totalWordCount = new HashMap<String, Integer>();
+		for(String wordCount: wordCounts) {
+			totalWordCount.put(wordCount, totalWordCount.get(wordCount) + 1);		
+		}
+		
+		return totalWordCount;
 	}
 
 	/**
@@ -278,9 +340,20 @@ public class EvaluationService {
 	 * @return
 	 */
 	public List<Long> calculatePrimeFactorsOf(long l) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		
+		List<Long> primeNumbers = new List<Long>();
+		long end = (long) Math.sqrt(1);
+	    for(int i = 2; i < end; i++) {
+	    	if(primeNumbers % i == 0 ) {
+	    		return primeNumbers;
+	    	} else {
+	    		list.add();
+	    	}
+	    }return primeNumbers; 
 	}
+	
+
+	
 
 	/**
 	 * 11. Create an implementation of the rotational cipher, also sometimes called
@@ -336,8 +409,18 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int calculateNthPrime(int i) {
-		// TODO Write an implementation for this method declaration
-		return 0;
+	        int number = i;
+	     for(int i = 2; i < number; i++) {
+	    	 if(number % i == 2) {
+	    	    return number;
+	    	 } else {
+	    		 
+	    	 
+	     }
+	     
+	
+	
+	
 	}
 
 	/**
@@ -534,8 +617,8 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int solveWordProblem(String string) {
-		// TODO Write an implementation for this method declaration
-		return 0;
-	}
+	
 
+	}
+}
 }
